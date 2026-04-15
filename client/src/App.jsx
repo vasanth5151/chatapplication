@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-    <div className="bg-[url('/bgImage.svg')] bg-cover">
+    <div className="bg-[url('/bgimage.svg')] bg-cover">
 
     <Toaster />
       <Routes>
