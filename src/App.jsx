@@ -14,7 +14,7 @@ function App() {
   return (
     <>
     
-    <div className="bg-[url('/bgimage.svg')] bg-cover">
+    <div style={{ backgroundImage: `url(${assets.bgimage})`, backgroundSize: 'cover' }}>
 
     <Toaster />
       <Routes>
