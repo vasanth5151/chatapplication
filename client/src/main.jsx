@@ -14,5 +14,5 @@ createRoot(document.getElementById('root')).render(
       </ChatProvider>
     </Authprovider>
    
-  </BrowserRouter>,
+  </BrowserRouter>
 )

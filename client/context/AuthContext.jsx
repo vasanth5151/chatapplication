@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 axios.defaults.baseURL = backendUrl
+console.log("Backend URL:", backendUrl);
 
 export const AuthContext = createContext();
 
