@@ -6,7 +6,6 @@ import Profilepage from './pages/ProfilePage';
 import {Toaster} from "react-hot-toast";
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import assets from './assets/assets';
 
 function App() {
 
@@ -15,7 +14,7 @@ function App() {
   return (
     <>
     
-    <div style={{ backgroundImage: `url(${assets.bgimage})`, backgroundSize: 'cover' }}>
+    <div className="bg-[url('/bgimage.svg')] bg-cover">
 
     <Toaster />
       <Routes>
