@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css'
-import HomePage from './pages/HomePage';
+import Homepage from './pages/HomePage';
 import Loginpage from './pages/LoginPage';
 import Profilepage from './pages/ProfilePage';
 import {Toaster} from "react-hot-toast";
@@ -18,7 +18,7 @@ function App() {
 
     <Toaster />
       <Routes>
-        <Route path='/' element={ authUser ? <HomePage /> : <Navigate to="/login" />} />
+        <Route path='/' element={ authUser ? <Homepage /> : <Navigate to="/login" />} />
         <Route path='/login' element={ !authUser? <Loginpage /> : <Navigate to="/" />} />
         <Route path='/profile' element={ authUser ? <Profilepage /> : <Navigate to="/login" />} />
       </Routes>
