@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css'
-import Homepage from './pages/Homepage';
+import Homepage from './pages/HomePage';
 import Loginpage from './pages/LoginPage';
 import Profilepage from './pages/ProfilePage';
 import {Toaster} from "react-hot-toast";
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-    prepare a minimal vercel.json for you,
+    
     <div className="bg-[url('/bgimage.svg')] bg-cover">
 
     <Toaster />
