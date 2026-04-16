@@ -13,6 +13,7 @@ function App() {
 
   return (
     <>
+    prepare a minimal vercel.json for you,
     <div className="bg-[url('/bgimage.svg')] bg-cover">
 
     <Toaster />
