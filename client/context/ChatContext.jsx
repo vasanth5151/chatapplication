@@ -23,7 +23,7 @@ export const ChatProvider = ({ children }) => {
                 setunseenmessages(data.unseenmessages || {})
             }
         } catch (error) {
-            toast.error(error.message)
+            toast.error(String(error.message || error))
 
         }
     }
@@ -38,7 +38,7 @@ export const ChatProvider = ({ children }) => {
 
             }
         } catch (error) {
-            toast.error(error.message)
+            toast.error(String(error.message || error))
 
         }
     }
@@ -50,10 +50,10 @@ export const ChatProvider = ({ children }) => {
             if (data.success) {
                 setmessages((prevMessages) => [...prevMessages, data.newMessage])
             } else {
-                toast.error(data.message)
+                toast.error(String(data.message || 'Failed to send message'))
             }
         } catch (error) {
-            toast.error(error.message)
+            toast.error(String(error.message || error))
         }
     }
 

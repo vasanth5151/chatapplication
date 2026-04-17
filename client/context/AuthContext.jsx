@@ -32,7 +32,7 @@ export const Authprovider = ({ children })=>{
                 }
                 
             } catch (error) {
-                toast.error(error.message)   
+                toast.error(error.message || "Something went wrong")   
             }
         }
 
@@ -50,12 +50,12 @@ export const Authprovider = ({ children })=>{
                   
                     navigate("/")
                 }else{
-                toast.error(data.message || 'Login failed')   
+                toast.error(data.message ? String(data.message) : 'Login failed')   
 
                 }
                 
             } catch (error) {
-                toast.error(error.message)   
+                toast.error(error.message ? String(error.message) : "Something went wrong")   
             }
 
         }
