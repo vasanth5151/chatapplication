@@ -1,5 +1,7 @@
 {
-    "rewrites":[
+    "framework": "vite",
+    "outputDirectory": "dist",
+    "rewrites": [
         {
             "source": "/(.*)",
             "destination": "/"
