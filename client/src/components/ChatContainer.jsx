@@ -80,7 +80,7 @@ const ChatContainer = () => {
         {messages.map((msg, index)=> (
 
           <div key={index} className={`flex items-end gap-2 py-2 justify-end ${msg.senderId !== authUser._id
-            && 'flex-row-reverse' }`}>
+            ? 'flex-row-reverse' : ''}`}>
               {msg.image ? (
                 <img src={msg.image} alt="" className='max-w-[230px] 
                 border border-gray-700 rounded-lg overflow-hidden mb-8'/>

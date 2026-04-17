@@ -56,7 +56,7 @@ const Sidebar = () => {
         {filteredUsers.map((user, index)=>(
           <div onClick={()=>{setselectedUsers(user); setunseenmessages( prev => ({...prev, [user._id]: 0}))} } key={index}
            className={`relative flex items-center gap-2 p-2 pl-4 rounded cursor-pointer max-sm:text-sm 
-          ${selectedUsers?._id === user._id && 'bg-[#282142]/50'}`}>
+          ${selectedUsers?._id === user._id ? 'bg-[#282142]/50' : ''}`}>
 
             <img src={user?.profilepic || assets.avatar_icon} alt="" className='w-8.75 aspect-square rounded-full' />
             <div className='flex flex-col leading-5'>
@@ -70,7 +70,7 @@ const Sidebar = () => {
                  
             </div>
 
-                      {unseenmessages[user._id] > 0 && <p className='absolute top-4 right-4 text-xs
+                      {unseenmessages?.[user._id] > 0 && <p className='absolute top-4 right-4 text-xs
                       h-5 w-5 flex justify-center items-center rounded-full bg-violet-500/50'>{unseenmessages[user._id]}</p>}
           </div>
          ))}

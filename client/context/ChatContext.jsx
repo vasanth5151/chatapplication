@@ -20,7 +20,7 @@ export const ChatProvider = ({ children })=>{
                     const {data} =  await axios.get("/api/messages/users");
                     if(data.success){
                         setusers(data.users)
-                        setunseenmessages(data.unseenmessages)
+                        setunseenmessages(data.unseenmessages || {})
                     }
         } catch (error) {
             toast.error(error.message)
@@ -58,7 +58,7 @@ export const ChatProvider = ({ children })=>{
     }
     
     // function to subscribe to messages for selected user
-    const subscribeToMessages = async () =>{
+    const subscribeToMessages = () =>{
         if(!socket) return;
 
         socket.on("newMessage", (newMessage)=>{
