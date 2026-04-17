@@ -46,17 +46,23 @@ app.use(express.json({limit: "4mb"}));
 app.use(cors());
 
 
+// DB connection middleware for all API routes (essential for Vercel serverless)
+app.use("/api", async (req, res, next) => {
+    try {
+        await dbconnect();
+        next();
+    } catch (error) {
+        console.error("Database connection failed in middleware:", error);
+        res.status(500).json({ success: false, message: "Database connection failed" });
+    }
+});
+
 // route setup
 app.use("/api/status", (req,res)=>{
     res.send("server is live")
 })
 app.use("/api/auth", userRouter);
 app.use("/api/messages", messageRouter);
-
-
-
-// DB connection
-await dbconnect();
 
 
 if(process.env.NODE_ENV !== "production"){
