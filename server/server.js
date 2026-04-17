@@ -5,16 +5,16 @@ import http from "http";
 import dbconnect from "./lib/db.js";
 import userRouter from "./routes/userRoutes.js";
 import messageRouter from "./routes/messageRoutes.js";
-import {Server} from "socket.io";
+import { Server } from "socket.io";
 
 // express server
 const app = express();
 const server = http.createServer(app);
- 
+
 
 // initialize the socket io
-export const io = new Server(server,{
-    cors:{origin:"*"}
+export const io = new Server(server, {
+    cors: { origin: "*" }
 })
 
 
@@ -23,51 +23,45 @@ export const userSocketMap = {};  //{userId: socketId}
 
 
 // socket io connection handler
-io.on("connection", (socket)=>{
+io.on("connection", (socket) => {
     const userId = socket.handshake.query.userId;
     console.log("user connected", userId);
-    
-    if(userId) userSocketMap[userId] = socket.id;
+
+    if (userId) userSocketMap[userId] = socket.id;
 
     // emit online users to all connected clients
     io.emit("getOnlineUsers", Object.keys(userSocketMap))
 
-    socket.on("disconnect", ()=>{
+    socket.on("disconnect", () => {
         console.log("user disconnected", userId);
         delete userSocketMap[userId];
         io.emit("getOnlineUsers", Object.keys(userSocketMap))
-    
+
     })
 })
 
 
 // middleware
-app.use(express.json({limit: "4mb"}));
+app.use(express.json({ limit: "4mb" }));
 app.use(cors());
 
 
-// DB connection middleware for all API routes (essential for Vercel serverless)
-app.use("/api", async (req, res, next) => {
-    try {
-        await dbconnect();
-        next();
-    } catch (error) {
-        console.error("Database connection failed in middleware:", error);
-        res.status(500).json({ success: false, message: "Database connection failed" });
-    }
-});
+
+// db connection
+dbconnect();
+
 
 // route setup
-app.use("/api/status", (req,res)=>{
+app.use("/api/status", (req, res) => {
     res.send("server is live")
 })
 app.use("/api/auth", userRouter);
 app.use("/api/messages", messageRouter);
 
 
-if(process.env.NODE_ENV !== "production"){
+if (process.env.NODE_ENV !== "production") {
     const PORT = process.env.port || 3000;
-    server.listen(PORT, ()=>console.log(`server running on port ${PORT}`))
+    server.listen(PORT, () => console.log(`server running on port ${PORT}`))
 }
 
 // export server for vercel
