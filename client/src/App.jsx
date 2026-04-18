@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-      <div style={{ backgroundImage: "url('/bgimage.svg')", backgroundSize: 'cover', backgroundRepeat: 'no-repeat', minHeight: '100vh' }}>
+      <div className="bg-[url('/bgimage.svg')] bg-contain">
 
         <Toaster />
         <Routes>
