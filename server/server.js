@@ -46,11 +46,6 @@ app.use(express.json({ limit: "4mb" }));
 app.use(cors());
 
 
-
-// db connection
-dbconnect();
-
-
 // route setup
 app.use("/api/status", (req, res) => {
     res.send("server is live")
@@ -58,6 +53,9 @@ app.use("/api/status", (req, res) => {
 app.use("/api/auth", userRouter);
 app.use("/api/messages", messageRouter);
 
+
+// db connection
+await dbconnect();
 
 if (process.env.NODE_ENV !== "production") {
     const PORT = process.env.port || 3000;
