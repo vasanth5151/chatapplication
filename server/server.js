@@ -61,6 +61,3 @@ const PORT = process.env.PORT || 5001;
 server.listen(PORT, () => {
     console.log(`server running on port ${PORT}`);
 });
-
-// export app for vercel
-export default app;
