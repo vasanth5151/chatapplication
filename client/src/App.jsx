@@ -13,7 +13,8 @@ function App() {
 
   return (
     <>
-      <div style={{ backgroundImage: "url('/bgimage.svg')", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center" }}>
+      <div>
+
 
         <Toaster />
         <Routes>
