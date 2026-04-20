@@ -13,7 +13,13 @@ function App() {
 
   return (
     <>
-      <div>
+      <div style={{
+        backgroundImage: "url('/bgimage.svg'), linear-gradient(135deg, #0d0015 0%, #2d0060 40%, #5b21b6 70%, #7c3aed 100%)",
+        backgroundSize: "cover, cover",
+        backgroundRepeat: "no-repeat, no-repeat",
+        backgroundPosition: "center, center",
+        minHeight: "100vh"
+      }}>
 
 
         <Toaster />
